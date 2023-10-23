@@ -15,6 +15,7 @@ function App() {
     <>
       <h1>NEWS!</h1>
       <NavBar />
+      <br/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/users" element={<Users/>} />
