@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { NavBar } from './components/navbar'
 import { Users } from './components/users'
 import { Articles } from './components/articles'
 import { Topics } from './components/topics'
 import { Home } from './components/home'
+import { getArticles } from '../api'
+import { SinlgleArticle } from './components/singleArticle'
 import './App.css'
 import './index.css'
 
 function App() {
-
 
   return (
     <>
@@ -17,10 +18,25 @@ function App() {
       <NavBar />
       <br/>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/users" element={<Users/>} />
-        <Route path="/articles" element={<Articles/>} />
-        <Route path="/topics" element={<Topics/>} />
+        <Route
+        path="/"
+        element={<Home/>} />
+
+        <Route
+        path="/users"
+        element={<Users/>} />
+
+        <Route
+        path="/articles"
+        element={<Articles />} />
+
+        <Route
+        path="/articles/:article_id"
+        element={<SinlgleArticle />} />
+
+        <Route
+        path="/topics"
+        element={<Topics/>} />
       </Routes>
     </>
   )
