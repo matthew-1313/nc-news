@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+#heading {
+  color: rgba(247, 226, 255, 0.87);
+}
+
+#heading:hover {
+  color: rgb(184, 76, 235);
+}
+
 #single_article {
   display: flexbox;
   border-radius: 50px;
@@ -37,4 +45,27 @@
   grid-template-columns: 350px 350px 350px;
   gap: 50px;
   padding: 10px;
+}
+
+#topicCard {
+  display:block;
+  gap: 2em;
+  border: 20px solid transparent;
+  border-color: #242424;
+  border-radius: 50px;
+  padding: 2em 3em;
+  color: rgba(247, 226, 255, 0.87);
+  background-color: rgb(133, 39, 177);
+}
+
+.dt {
+  text-align: left;
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.dd {
+  text-align: left;
+  font-size: 1.5em;
+  font-style: italic;
 }

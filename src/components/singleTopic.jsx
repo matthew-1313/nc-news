@@ -1,20 +1,25 @@
-import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
 import { getArticles } from "../../api"
-import { mapFunction } from "./utils/mapper"
-import { Link } from 'react-router-dom'
-import { all } from "axios"
+import { Link } from "react-router-dom"
 
-
-export const Articles = () => {
-    const [allArticles, setAllArticles] = useState()
+export const SingleTopic = () => {
+    const [thisTopic, setThisTopic] = useState()
+    const { topic } = useParams()
 
     useEffect(() => {
         getArticles().then((articles) => {
-            setAllArticles(articles)
+            const thisTopicArray = []
+            for (let i = 0; i< articles.length; i++){
+                if (articles[i].topic === topic){
+                    thisTopicArray.push(articles[i])
+                }
+            }
+            setThisTopic(thisTopicArray)
         })
-    }, [allArticles])
+    }, [thisTopic])
 
-    if (!allArticles) {
+    if (!thisTopic) {
         return (
             <h2>Loading Articles...</h2>
         )
@@ -22,7 +27,7 @@ export const Articles = () => {
     return (
         <div>
             <div className="grid-container" >
-                {allArticles.map((article) => {
+                {thisTopic.map((article) => {
                     return (
                         <Link to={`/articles/${article.article_id}`} key={`article_${article.article_id}`}>
                         <div id="single_article">

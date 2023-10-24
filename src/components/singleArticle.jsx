@@ -15,7 +15,7 @@ useEffect(() => {
 
     if (!singleArticle) {
         return (
-            <p>kjhg</p>
+            <h2>Loading Article...</h2>
         )
     } else {
     return (
