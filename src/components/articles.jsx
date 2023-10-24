@@ -14,7 +14,6 @@ export const Articles = () => {
         })
     }, [allArticles])
 
-
     return (
         <div>
             <p>articles</p>
