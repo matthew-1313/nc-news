@@ -21,3 +21,9 @@ export const getTopics = () => {
     return res.data.topics;
   });
 };
+
+export const getArticleComments = (id) => {
+  return MyApi.get(`/articles/${id}/comments`).then((res) => {
+    return res.data.comments;
+  });
+};

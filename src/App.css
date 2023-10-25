@@ -69,3 +69,22 @@
   font-size: 1.5em;
   font-style: italic;
 }
+
+.articleBody {
+  text-align: left;
+}
+
+.singleComment {
+  text-align: left;
+  padding: 2em 3em;
+  border-radius: 50px;
+  color: rgb(133, 39, 177);
+  background-color: rgba(247, 226, 255, 0.87);
+  border: 20px solid transparent;
+  border-color: #242424;
+  gap: 3em;
+}
+
+.commentHead {
+  line-height: 0.02;
+}
