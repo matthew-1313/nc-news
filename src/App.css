@@ -104,3 +104,13 @@
 .gap {
   width: 20px;
 }
+
+.upVote {
+  color:rgb(136, 231, 136);
+  font-size: 1.25em;
+}
+
+.downVote {
+  color:rgb(236, 78, 78);
+  font-size: 1.25em;
+}

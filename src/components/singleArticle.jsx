@@ -9,6 +9,8 @@ import { OneArticleMapper } from "./OneArticleMapper"
 export const SinlgleArticle = () => {
 const [singleArticle, setSingleArticle] = useState()
 const [comments, setComments] = useState()
+const [isDownVote, setIsDownVote] = useState(false)
+const [isUpVote, setIsUpVote] = useState(false)
 const { article_id } = useParams()
 //console.log('single:', article_id)
 
@@ -33,7 +35,7 @@ useEffect(() => {
     return (
         <div>
 
-        <OneArticleMapper singleArticle={singleArticle}/>
+        <OneArticleMapper setIsUpVote={setIsUpVote} setIsDownVote={setIsDownVote} singleArticle={singleArticle}/>
         <PostComment setComments={setComments} article_id={article_id}/>
         <LoadComments comments={comments}/>
 
