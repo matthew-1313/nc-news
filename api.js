@@ -27,3 +27,9 @@ export const getArticleComments = (id) => {
     return res.data.comments;
   });
 };
+
+export const postComment = (id, comment) => {
+  return MyApi.post(`/articles/${id}/comments`, comment).then((res) => {
+    return res.data.newComment;
+  });
+};
