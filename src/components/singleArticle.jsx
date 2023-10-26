@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticlesById } from "../../api"
 import { getArticleComments } from "../../api"
-// import { LoadComments } from "./utils/loadComments"
+import { LoadComments } from "./utils/loadComments"
+import { PostComment } from "./PostComment"
+import { OneArticleMapper } from "./OneArticleMapper"
 
 export const SinlgleArticle = () => {
 const [singleArticle, setSingleArticle] = useState()
@@ -18,8 +20,7 @@ useEffect(() => {
 
 useEffect(() => {
     getArticleComments(article_id).then((comments) => {
-        // console.log(comments)
-        setComments(comments)
+        setComments(comments.reverse())
     })
 }, [comments])
 
@@ -31,28 +32,12 @@ useEffect(() => {
     } else {
     return (
         <div>
-        <div className="articleCard" >
-            <div id="articleCard" key={`article_${singleArticle.article_id}`}>
-                <h2>{singleArticle.title}</h2>
-                <img className="thumbnail" src={singleArticle.article_img_url}/>
-                <p> Article#<b>{singleArticle.article_id}</b>   |  By: <b>{singleArticle.author}</b>   |  Topic: <b>{singleArticle.topic}</b>  |  Votes: <b>{singleArticle.votes}</b></p>
-                <p className="articleBody">{singleArticle.body}</p>
-            </div>
-        </div>
-        <div>
-                {comments.map((comment) => {
-                    return (
-                        <div className="singleComment" key={comment.comment_id}>
-                        <br/>
-                        <p className="commentHead">Comment#<b>{comment.comment_id}</b></p>
-                        <p>posted by <b>{comment.author}</b> | Votes: <b>{comment.votes}</b></p>
-                        <br/>
-                        <p className="commentBody">{comment.body}</p>
-                        <br/>
-                        </div>
-                    )
-                })}
-            </div>
+
+        <OneArticleMapper singleArticle={singleArticle}/>
+        <PostComment setComments={setComments} article_id={article_id}/>
+        <LoadComments comments={comments}/>
+
+
         </div>
     )
     }
