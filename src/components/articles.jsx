@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import { getArticles } from "../../api"
-import { mapFunction } from "./utils/mapper"
 import { Link } from 'react-router-dom'
-import { all } from "axios"
 
 
 export const Articles = () => {
@@ -10,6 +8,10 @@ export const Articles = () => {
 
     useEffect(() => {
         getArticles().then((articles) => {
+
+
+            //add sort function here
+
             setAllArticles(articles)
         })
     }, [allArticles])
@@ -21,6 +23,13 @@ export const Articles = () => {
     } else {
     return (
         <div>
+            <div className="sortSection">
+                <h2>Sort by:</h2>
+                <button>Article Number</button>
+                <button>Title</button>
+                <button>Author</button>
+                <button>Votes</button>
+            </div>
             <div className="grid-container" >
                 {allArticles.map((article) => {
                     return (

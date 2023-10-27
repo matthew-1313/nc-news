@@ -26,7 +26,7 @@ useEffect(() => {
             setComments([{
                 "comment_id": '',
                 "body": "be the first to comment on this post",
-                "article_id": 15,
+                "article_id": '',
                 "author": "",
                 "votes": null,
                 "created_at": ""

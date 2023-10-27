@@ -126,3 +126,7 @@
   cursor: pointer;
 }
 
+.sortSection {
+  display: inline-flex;
+  gap: 15px;
+}
