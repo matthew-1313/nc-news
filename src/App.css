@@ -109,8 +109,20 @@
   color:rgb(136, 231, 136);
   font-size: 1.25em;
 }
+.upVote:hover {
+  color:rgb(0, 204, 0);
+}
 
 .downVote {
   color:rgb(236, 78, 78);
   font-size: 1.25em;
 }
+.downVote:hover {
+  color:rgb(214, 0, 0);
+}
+
+#voteButton {
+  font-weight: 700;
+  cursor: pointer;
+}
+

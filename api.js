@@ -33,3 +33,9 @@ export const postComment = (id, comment) => {
     return res.data.newComment;
   });
 };
+
+export const voteOnArticle = (id, vote) => {
+  return MyApi.patch(`/articles/${id}`, vote).then((res) => {
+    return res.data.article;
+  });
+};

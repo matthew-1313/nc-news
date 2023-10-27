@@ -5,14 +5,12 @@ import { getArticleComments } from "../../api"
 import { LoadComments } from "./utils/loadComments"
 import { PostComment } from "./PostComment"
 import { OneArticleMapper } from "./OneArticleMapper"
+import { VoteSection } from "./voting"
 
 export const SinlgleArticle = () => {
 const [singleArticle, setSingleArticle] = useState()
 const [comments, setComments] = useState()
-const [isDownVote, setIsDownVote] = useState(false)
-const [isUpVote, setIsUpVote] = useState(false)
 const { article_id } = useParams()
-//console.log('single:', article_id)
 
 useEffect(() => {
     getArticlesById(article_id).then((article) => {
@@ -22,7 +20,18 @@ useEffect(() => {
 
 useEffect(() => {
     getArticleComments(article_id).then((comments) => {
-        setComments(comments.reverse())
+        if (comments) {
+            setComments(comments.reverse())
+        } else {
+            setComments([{
+                "comment_id": '',
+                "body": "be the first to comment on this post",
+                "article_id": 15,
+                "author": "",
+                "votes": null,
+                "created_at": ""
+                }])
+        }
     })
 }, [comments])
 
@@ -35,7 +44,8 @@ useEffect(() => {
     return (
         <div>
 
-        <OneArticleMapper setIsUpVote={setIsUpVote} setIsDownVote={setIsDownVote} singleArticle={singleArticle}/>
+        <VoteSection article_id={article_id} setSingleArticle={setSingleArticle} singleArticle={singleArticle}/>
+        <OneArticleMapper singleArticle={singleArticle}/>
         <PostComment setComments={setComments} article_id={article_id}/>
         <LoadComments comments={comments}/>
 
